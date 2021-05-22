@@ -49,6 +49,7 @@ const FormContainer = () => {
           value={entryPrice}
           aria-label="Amount of entry" 
           onChange={e => setEntryPrice(e.target.value)}
+          type='number'
         />
       </InputGroup>
 
@@ -61,6 +62,7 @@ const FormContainer = () => {
           value={stopLoss}
           aria-label="Stoploss" 
           onChange={e => setStoploss(e.target.value)}
+          type='number'
         />
       </InputGroup>
 
@@ -73,6 +75,7 @@ const FormContainer = () => {
           value={risk}
           aria-label="Risk amount" 
           onChange={e => setRisk(e.target.value)}
+          type='number'
         />
       </InputGroup>
 

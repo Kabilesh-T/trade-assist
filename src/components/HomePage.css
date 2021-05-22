@@ -1,0 +1,19 @@
+.container{
+  /* background-color: rgb(219, 236, 255); */
+  padding: 1rem;
+  margin-top: 2rem;
+  height: 90vh;
+}
+
+.header {
+  text-align: center;
+}
+
+.entryRow{
+  margin-top: 4rem;
+  padding: 6rem;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid gray;
+  border-radius: 0.5rem;
+}

@@ -27,7 +27,10 @@ const FormContainer = () => {
     const quantity = parseInt(risk/riskPerShare)
     setQty(quantity);
     setCapitalNeeded(quantity*entryPrice);
-    toggleToast();
+    if(capitalNeeded > 0 && !showToast)
+    {
+      toggleToast();
+    }
   };
 
   const toggleToast = () => {

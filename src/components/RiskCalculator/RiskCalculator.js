@@ -2,15 +2,15 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import FormContainer from './FormContainer';
-import './HomePage.css';
+import FormContainer from '../FormContainer';
+import './RiskCalculator.css';
 
-const HomePage = () => {
+const RiskCalculator = () => {
   return (
     <Container fluid className='container'>
       <Row>
         <Col>
-          <h1 className="header"> Trade Assist </h1>
+          <h1 className="header"> Risk Calculator </h1>
         </Col>
       </Row>
       <Row className="entryRow">
@@ -19,4 +19,4 @@ const HomePage = () => {
     </Container>
   );
 };
-export default HomePage;
+export default RiskCalculator;

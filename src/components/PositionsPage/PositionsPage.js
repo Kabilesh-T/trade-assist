@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Table from 'react-bootstrap/Table'
+
+import { getOpenPositons } from '../../actions/positions';
+
+import TableRow from './TableRow';
 import './PositionsPage.css';
 
 const PositionsPage = () => {
+  useEffect(() => {
+    getOpenPositons();
+  }, []);
   return (
     <div className='PositionsPage'>
       <h1>Open Positions</h1>
@@ -14,30 +21,13 @@ const PositionsPage = () => {
             <th>Price</th>
             <th>Qty</th>
             <th>Date</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Voltas</td>
-            <td>1004</td>
-            <td>20</td>
-            <td>12-05-21</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Mindtree</td>
-            <td>773</td>
-            <td>33</td>
-            <td>19-04-21</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>ICICI Bank</td>
-            <td>635.70</td>
-            <td>10</td>
-            <td>25-05-21</td>
-          </tr>
+          <TableRow no={1} symbol='Voltas' average={1001} quantity={20} entryDate='12-05-21' />
+          <TableRow no={2} symbol='Mindtree' average={773} quantity={33} entryDate='19-04-21' />
+          <TableRow no={3} symbol='ICICI Bank' average={635.70} quantity={10} entryDate='25-05-21' />
         </tbody>
       </Table>
     </div>

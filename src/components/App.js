@@ -1,23 +1,23 @@
 import React, { Component } from 'react'
+import { Route } from "react-router-dom";
 import Header from './reuse/Header/Header';
 import RiskCalculator from "./RiskCalculator/RiskCalculator";
 import PositionsPage from "./PositionsPage/PositionsPage";
 
 class App extends Component {
 
-  renderPage = () => {
-    const route = window.location.pathname;
-    if(route === '/positions') {
-      return <PositionsPage/>
-    }
-    return <RiskCalculator/>
-  };
-
   render() {
     return (
       <div>
-        <Header/>
-        {this.renderPage()}
+        <Header />
+        <Route path='/' exact>
+          <RiskCalculator />
+        </Route>
+        <Route path='/positions' component={PositionsPage}>
+        </Route>
+        <Route path='/calculator'>
+          <RiskCalculator />
+        </Route>
       </div>
     );
   };

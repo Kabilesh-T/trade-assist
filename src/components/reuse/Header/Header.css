@@ -1,0 +1,40 @@
+.navBar{
+  height: 7vh;
+  background-color: rgb(53, 53, 53);
+  padding: 0 1rem 0 1rem;
+  align-items: center;
+  display: flex;
+}
+
+.brand{
+  padding-right: 1rem;
+  margin-right: 1rem;
+  /* border-right: 1px solid white; */
+  font-size: larger;
+  font-weight: 900;
+}
+
+.brand:hover{
+  text-decoration: none !important;
+}
+
+.nav{
+  height: 100%;
+  padding-right: 2rem;
+  align-items: center;
+  padding-left: 2rem;
+}
+
+.navActive{
+  background-color: rgb(153, 153, 153);
+}
+
+a{
+  color: white;
+}
+
+a:hover{
+  color: white;
+  text-decoration: none !important;
+}
+

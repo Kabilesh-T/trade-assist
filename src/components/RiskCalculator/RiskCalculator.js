@@ -3,18 +3,18 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import FormContainer from '../FormContainer';
-import './RiskCalculator.css';
+import './RiskCalculator.scss';
 
 const RiskCalculator = () => {
   return (
     <Container fluid className='container'>
       <Row>
         <Col>
-          <h1 className="header"> Risk Calculator </h1>
+          <h2 className="header"> Risk Calculator </h2>
         </Col>
       </Row>
       <Row className="entryRow">
-        <FormContainer/>
+        <FormContainer />
       </Row>
     </Container>
   );

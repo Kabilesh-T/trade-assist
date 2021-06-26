@@ -1,27 +1,35 @@
-import React from 'react'
-import Navbar from 'react-bootstrap/Navbar'
-import Nav from 'react-bootstrap/Nav'
+import React, { useContext } from 'react'
 import { NavLink, Link } from "react-router-dom";
-import './Header.css';
+import Button from 'react-bootstrap/Button'
+import MobileHeader from './MobileHeader';
+import { NAV_LIST } from './headerConstants';
+import firebase from '../../../config/Firebase';
+import { AuthContext } from '../../Auth/Auth';
+import './Header.scss';
 
-const navNames = {
-  'calculator': 'Risk Calculator',
-  'positions': 'Open Positions'
-}
+
 
 const renderNavItem = navItem => (
-  <NavLink className='nav' activeClassName='navActive' to={`/${navItem}`}>{navNames[navItem]}</NavLink>
+  <NavLink className='NavBar--nav' activeClassName='NavBar--nav_navActive' to={`${navItem.link}`}>{navItem.name}</NavLink>
 );
 
 const Header = () => {
+  const { currentUser } = useContext(AuthContext);
   return (
-    <div className='navBar'>
-      <div className='brand'>
-        <Link to='/calculator'>Trade Assist</Link>
+    <>
+      <div className='NavBar'>
+        <div className='NavBar--brand'>
+          <Link to='/'>Trade Assist</Link>
+        </div>
+        <div>
+          {NAV_LIST.map(item => renderNavItem(item))}
+          {currentUser && (
+            <Button variant='outline-light' onClick={() => firebase.auth().signOut()}>Log out</Button>
+          )}
+        </div>
       </div>
-      {renderNavItem('calculator')}
-      {renderNavItem('positions')}
-    </div>
+      <MobileHeader />
+    </>
   )
 }
 export default Header;

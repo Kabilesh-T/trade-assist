@@ -1,5 +1,4 @@
 .container{
-  /* background-color: rgb(219, 236, 255); */
   padding: 1rem;
   padding-bottom: 2rem; 
   margin-top: 1rem;
@@ -18,3 +17,15 @@
   border: 2px solid gray;
   border-radius: 0.5rem;
 }
+
+@media (max-width: 600px) {
+  .entryRow {
+    border: none;
+    padding: 2rem;
+    margin-top: 3rem;
+  }
+  .container {
+    margin-top: 50%;
+  }
+}
+

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './PositionsPage.css';
+import './PositionsPage.scss';
 
 const TableRow = ({ no, symbol, average, quantity, entryDate }) => {
   return (
@@ -10,7 +10,7 @@ const TableRow = ({ no, symbol, average, quantity, entryDate }) => {
       <td>{average}</td>
       <td>{quantity}</td>
       <td>{entryDate}</td>
-      <td className='action'><div className='btn btn-danger'>Exit</div></td>
+      <td><div className='btn btn-danger'>Exit</div></td>
     </tr>
   )
 }

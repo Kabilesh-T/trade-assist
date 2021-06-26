@@ -1,0 +1,20 @@
+.Login {
+  width: 70%;
+  margin-top: 10%;
+  border: 1px solid #000;
+  height: fit-content;
+  padding: 2rem;
+  border-radius: 10px;
+  background-color: #353535;
+  color: white;
+
+  Button {
+    margin-right: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .Login {
+    margin-top: 50%;
+  }
+}

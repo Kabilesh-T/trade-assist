@@ -1,5 +1,5 @@
 import React from 'react';
-import './EntryBox.css';
+import './EntryBox.scss';
 import Col from 'react-bootstrap/Col'
 
 const EntryBox = ({ entryName }) => {

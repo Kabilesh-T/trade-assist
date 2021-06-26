@@ -1,36 +1,57 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table'
 
 import { getOpenPositons } from '../../actions/positions';
 
 import TableRow from './TableRow';
-import './PositionsPage.css';
+import PositionPageMobile from './PositionPageMobile';
+import './PositionsPage.scss';
+
+const tableHeader = [
+  '#',
+  'Symbol',
+  'Price',
+  'Quantity',
+  'Date',
+  'Action'
+];
 
 const PositionsPage = () => {
-  useEffect(() => {
-    getOpenPositons();
+  const [openPositions, setOpenPositions] = useState([])
+
+  useEffect(async () => {
+    setOpenPositions(await getOpenPositons());
   }, []);
   return (
-    <div className='PositionsPage'>
-      <h1>Open Positions</h1>
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Symbol</th>
-            <th>Price</th>
-            <th>Qty</th>
-            <th>Date</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <TableRow no={1} symbol='Voltas' average={1001} quantity={20} entryDate='12-05-21' />
-          <TableRow no={2} symbol='Mindtree' average={773} quantity={33} entryDate='19-04-21' />
-          <TableRow no={3} symbol='ICICI Bank' average={635.70} quantity={10} entryDate='25-05-21' />
-        </tbody>
-      </Table>
-    </div>
+    <>
+      <div className='PositionsPage'>
+        <h1>Open Positions</h1>
+        <Table>
+          <thead>
+            <tr>
+              {tableHeader.map(header =>
+                <th>{header}</th>
+              )}
+            </tr>
+          </thead>
+          <tbody>
+            {openPositions.map(position =>
+              <TableRow
+                no={position.no}
+                symbol={position.symbol}
+                average={position.average}
+                quantity={position.quantity}
+                entryDate={position.entryDate}
+              />
+            )}
+          </tbody>
+        </Table>
+      </div>
+
+      <div className='PositionPageMobile'>
+        <PositionPageMobile />
+      </div>
+    </>
   )
-}
+};
 export default PositionsPage;

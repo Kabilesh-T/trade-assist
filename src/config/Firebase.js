@@ -1,4 +1,5 @@
 import firebase from 'firebase';
+import "firebase/auth";
 
 var config = {
   apiKey: "AIzaSyC_O2cTb1ltTVcS1PVxQCrUbQKFEVbmGeQ",
@@ -6,6 +7,9 @@ var config = {
   databaseURL: "https://tradeassist-05-default-rtdb.firebaseio.com",
   storageBucket: "tradeassist-05.appspot.com"
 };
-firebase.initializeApp(config);
 
+if (!firebase.apps.length) {
+  firebase.initializeApp(config);
+}
+firebase.app();
 export default firebase;

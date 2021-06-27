@@ -1,5 +1,6 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import Button from 'react-bootstrap/Button'
+import { Link } from 'react-router-dom';
 import { Navbar, Nav } from 'react-bootstrap'
 import { NAV_LIST } from './headerConstants';
 import firebase from '../../../config/Firebase';
@@ -8,14 +9,15 @@ import './Header.scss';
 
 const MobileHeader = () => {
   const { currentUser } = useContext(AuthContext);
+  const [expanded, setExpanded] = useState(false);
   return (
-    <Navbar collapseOnSelect className='NavBarMobile ' expand="lg" sticky="top">
+    <Navbar expanded={expanded} collapseOnSelect className='NavBarMobile ' expand="lg" sticky="top">
       <Navbar.Brand href="/">
         <div className='NavBarMobile--brand'>
           Trade Assist
         </div>
       </Navbar.Brand>
-      <Navbar.Toggle aria-controls="responsive-navbar-nav">
+      <Navbar.Toggle onClick={() => setExpanded(!expanded)} aria-controls="responsive-navbar-nav">
         <div className='NavBarMobile--hamburger'>
           <div></div>
           <div></div>
@@ -23,16 +25,16 @@ const MobileHeader = () => {
         </div>
       </Navbar.Toggle>
       <Navbar.Collapse className="NavBarMobile--menu" id="responsive-navbar-nav">
-        <Nav className="mr-auto">
+        <Nav style={{ textAlign: 'center' }} className="mr-auto">
           {NAV_LIST.map(item =>
-            <Nav.Link href={item.link}>
+            <Link to={item.link} onClick={() => setExpanded(!expanded)}>
               <div className="NavBarMobile--menu_item">{item.name}</div>
-            </Nav.Link>
+            </Link>
           )}
           {currentUser && (
-            <Nav.Link>
+            <Link style={{ justifyContent: 'center' }} onClick={() => setExpanded(!expanded)}>
               <Button variant='outline-light' onClick={() => firebase.auth().signOut()}>Log out</Button>
-            </Nav.Link>
+            </Link>
           )}
         </Nav>
       </Navbar.Collapse>

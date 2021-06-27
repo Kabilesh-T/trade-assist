@@ -22,7 +22,7 @@ const SignUp = ({ history }) => {
   }, [history]);
 
   return (
-    <Container className="Login">
+    <Container className="Signup">
       <h1>Sign-Up</h1>
       <Form onSubmit={handleSignUp}>
         <Form.Group controlId="email">

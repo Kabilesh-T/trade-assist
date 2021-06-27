@@ -56,7 +56,7 @@ const Login = ({ history }) => {
       </Container>
 
       {/* Mobile Login */}
-      <MobileLogin />
+      <MobileLogin onLogin={handleLoginIn} />
     </>
   )
 }

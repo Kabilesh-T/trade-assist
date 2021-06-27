@@ -17,18 +17,20 @@ const Header = () => {
   const { currentUser } = useContext(AuthContext);
   return (
     <>
-      <div className='NavBar'>
-        <div className='NavBar--brand'>
-          <Link to='/'>Trade Assist</Link>
+      {currentUser && (<>
+        <div className='NavBar'>
+          <div className='NavBar--brand'>
+            <Link to='/'>Trade Assist</Link>
+          </div>
+          <div>
+            {NAV_LIST.map(item => renderNavItem(item))}
+            {currentUser && (
+              <Button variant='outline-light' onClick={() => firebase.auth().signOut()}>Log out</Button>
+            )}
+          </div>
         </div>
-        <div>
-          {NAV_LIST.map(item => renderNavItem(item))}
-          {currentUser && (
-            <Button variant='outline-light' onClick={() => firebase.auth().signOut()}>Log out</Button>
-          )}
-        </div>
-      </div>
-      <MobileHeader />
+        <MobileHeader />
+      </>)}
     </>
   )
 }

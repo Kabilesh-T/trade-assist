@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 import { Link } from "react-router-dom";
+import MobileLogin from './MobileLogin';
 import { AuthContext } from '../Auth/Auth';
 import firebase from '../../config/Firebase'
 import './Login.scss'
@@ -53,6 +54,9 @@ const Login = ({ history }) => {
           </div>
         </Form>
       </Container>
+
+      {/* Mobile Login */}
+      <MobileLogin />
     </>
   )
 }

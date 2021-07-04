@@ -15,7 +15,7 @@ export const getOpenPositons = userId => {
   });
 };
 
-export const createOpenPosition = (userId) => {
+export const addOpenPosition = (userId) => {
   const newPositionRef = database.ref('/open-positions/'+userId).push();
   newPositionRef.set({
     "average" : 779,
@@ -24,5 +24,10 @@ export const createOpenPosition = (userId) => {
     "quantity" : 30,
     "symbol" : "Mindtree"
   });
+  return getOpenPositons(userId);
+}
+
+export const closePosition = (userId, positionId) => {
+  database.ref().child('/open-positions/'+userId+'/'+positionId).remove();
   return getOpenPositons(userId);
 }

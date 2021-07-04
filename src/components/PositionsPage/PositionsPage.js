@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
 
-import { getOpenPositons, createOpenPosition } from '../../actions/positions';
+import { getOpenPositons, addOpenPosition, closePosition } from '../../actions/positions';
 import { AuthContext } from '../Auth/Auth';
 
 import TableRow from './TableRow';
@@ -28,7 +28,13 @@ const PositionsPage = () => {
   }, []);
 
   const handleAddPosition = async () => {
-    const updatedPositions = await createOpenPosition(uid);
+    const updatedPositions = await addOpenPosition(uid);
+    setOpenPositions(updatedPositions);
+  };
+
+  const handleDeletePosition = async positionId => {
+    console.log("Deleted: ",positionId );
+    const updatedPositions = await closePosition(uid, positionId);
     setOpenPositions(updatedPositions);
   }
 
@@ -49,11 +55,13 @@ const PositionsPage = () => {
           <tbody>
             {openPositions.map(position =>
               <TableRow
+                key={position[0]}
                 no={position[1]['no']}
                 symbol={position[1]['symbol']}
                 average={position[1]['average']}
                 quantity={position[1]['quantity']}
                 entryDate={position[1]['entryDate']}
+                onDelete={() => handleDeletePosition(position[0])}
               />
             )}
           </tbody>

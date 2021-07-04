@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import Table from 'react-bootstrap/Table'
-import Button from 'react-bootstrap/Button'
+import {Table, Button} from 'react-bootstrap'
 
 import { getOpenPositons, addOpenPosition, closePosition } from '../../actions/positions';
 import { AuthContext } from '../Auth/Auth';
@@ -19,7 +18,7 @@ const tableHeader = [
 ];
 
 const PositionsPage = () => {
-  const [openPositions, setOpenPositions] = useState([])
+  const [openPositions, setOpenPositions] = useState([]);
   const { currentUser } = useContext(AuthContext);
   const uid = currentUser.uid
 

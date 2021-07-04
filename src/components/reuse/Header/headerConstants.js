@@ -5,15 +5,15 @@ export const NAV_NAMES2 = [
 
 export const NAV_LIST = [
   {
-    name: 'Home',
-    link: '/home'
-  },
-  {
     name: 'Risk Calculator',
     link: '/calculator'
   },
   {
     name: 'Open Positions',
     link: '/positions'
+  },
+  {
+    name: 'Future Positions',
+    link: '/future-positions'
   }
 ]

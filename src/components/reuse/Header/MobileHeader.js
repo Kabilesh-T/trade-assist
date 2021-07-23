@@ -26,8 +26,8 @@ const MobileHeader = () => {
       </Navbar.Toggle>
       <Navbar.Collapse className="NavBarMobile--menu" id="responsive-navbar-nav">
         <Nav style={{ textAlign: 'center' }} className="mr-auto">
-          {NAV_LIST.map(item =>
-            <Link to={item.link} onClick={() => setExpanded(!expanded)}>
+          {NAV_LIST.map((item, key) =>
+            <Link key={key} to={item.link} onClick={() => setExpanded(!expanded)}>
               <div className="NavBarMobile--menu_item">{item.name}</div>
             </Link>
           )}

@@ -9,8 +9,8 @@ import './Header.scss';
 
 
 
-const renderNavItem = navItem => (
-  <NavLink className='NavBar--nav' activeClassName='NavBar--nav_navActive' to={`${navItem.link}`}>{navItem.name}</NavLink>
+const renderNavItem = (navItem, key) => (
+  <NavLink key={key} className='NavBar--nav' activeClassName='NavBar--nav_navActive' to={`${navItem.link}`}>{navItem.name}</NavLink>
 );
 
 const Header = () => {
@@ -23,7 +23,7 @@ const Header = () => {
             <Link to='/'>Trade Assist</Link>
           </div>
           <div>
-            {NAV_LIST.map(item => renderNavItem(item))}
+            {NAV_LIST.map((item, key ) => renderNavItem(item, key))}
             {currentUser && (
               <Button variant='outline-light' onClick={() => firebase.auth().signOut()}>Log out</Button>
             )}

@@ -27,12 +27,9 @@ const FuturePositions = () => {
         setFuturePositions(await getFuturePositons(uid));
     },[]);
 
-    const handleAddPosition = string => {
-        // setAddModalOpen(true);
-        // const updatedFuturePositions = await addFuturePosition(uid);
-        // setFuturePositions(updatedFuturePositions);
-        setAddModalOpen(false);
-        console.log(string)
+    const handleAddPosition = async() => {
+        const updatedFuturePositions = await addFuturePosition(uid);
+        setFuturePositions(updatedFuturePositions);
     };
 
     const handleDeletePosition = async positionId => {

@@ -1,0 +1,55 @@
+@import "../../style/style.scss";
+.Logon {
+
+  &__columnone {
+    background-color: $blue4;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    &--right {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+      Button {
+        border-radius: 26px;
+        background-color: $blue3;
+        border: none;
+        width: fit-content;
+      }
+    }
+  }
+
+  &__columntwo {
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    &--left {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+      Button {
+        border-radius: 26px;
+        background-color: $blue3;
+        border: none;
+        width: fit-content;
+      }
+    }
+    &--link {
+      color: $blue1;
+      text-align: right;
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .Logon {
+    display:none;
+  }
+}

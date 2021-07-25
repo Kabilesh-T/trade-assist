@@ -5,6 +5,7 @@ import RiskCalculator from "./RiskCalculator/RiskCalculator";
 import PositionsPage from "./PositionsPage/PositionsPage";
 import FuturePositions from "./FuturePositions/FuturePositions";
 import Login from './Login/Login';
+import Logon from './Login/Logon';
 import PrivateRoute from './Auth/PrivateRoute';
 import SignUp from './Login/SignUp';
 import './App.scss';
@@ -21,7 +22,7 @@ class App extends Component {
         <PrivateRoute path='/positions' component={PositionsPage} />
         <PrivateRoute path='/calculator' component={RiskCalculator} />
         <PrivateRoute path='/future-positions' component={FuturePositions} />
-        <Route path='/login' component={Login} />
+        <Route path='/login' component={Logon} />
         <Route path='/signup' component={SignUp} />
       </div>
     );

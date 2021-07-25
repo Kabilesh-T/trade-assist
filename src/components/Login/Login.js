@@ -1,64 +1,36 @@
-import React, { useCallback, useContext } from 'react';
-import { withRouter, Redirect } from 'react-router';
+import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button'
-import Container from 'react-bootstrap/Container'
-import { Link } from "react-router-dom";
-import MobileLogin from './MobileLogin';
-import { AuthContext } from '../Auth/Auth';
-import firebase from '../../config/Firebase'
-import './Login.scss'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import { SocialIcon } from 'react-social-icons';
+import './Logon.scss'
 
-const Login = ({ history }) => {
-
-  const handleLoginIn = useCallback(async event => {
-    event.preventDefault();
-    const { email, password } = event.target.elements;
-    try {
-      await firebase
-        .auth()
-        .signInWithEmailAndPassword(email.value, password.value);
-      history.push("/");
-    } catch (error) {
-      alert(error);
-    }
-  }, [history]);
-
-  const { currentUser } = useContext(AuthContext);
-
-  if (currentUser) {
-    return <Redirect to='/' />
-  }
+const Login = ({ handleLoginIn }) => {
 
   return (
-    <>
-      <Container className="Login">
-        <h1>Login</h1>
-        <Form onSubmit={handleLoginIn}>
-          <Form.Group controlId="email">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
-          </Form.Group>
-
-          <Form.Group controlId="password">
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
-          </Form.Group>
-          <div>
-            <Button variant="primary" type="submit">
-              Login
-            </Button>
-            <Button variant='primary'>
-              <Link to={'/signup'}>Sign Up</Link>
-            </Button>
-          </div>
-        </Form>
-      </Container>
-
-      {/* Mobile Login */}
-      <MobileLogin onLogin={handleLoginIn} />
-    </>
+    <div className='Logon__columntwo--left'>
+      <h3 className="textColor4 pb4">Welcome Back</h3>
+      <Row className="pb4">
+        <Col><SocialIcon style={{ width: '30px', height: '30px'}} bgColor='#012998' network="google" onClick={() => console.log("Clicked google")} /></Col>
+        <Col><SocialIcon style={{ width: '30px', height: '30px'}} bgColor='#012998' network="facebook" onClick={() => console.log("Clicked facebook")} /></Col>
+        <Col><SocialIcon style={{ width: '30px', height: '30px'}} bgColor='#012998' network="twitter" onClick={() => console.log("Clicked twitter")} /></Col>
+      </Row>
+      <p className='textColor4'> or </p>
+      <Form onSubmit={handleLoginIn}>
+        <Form.Group className="mb-3" controlId="email">
+          <Form.Control type="email" placeholder="Email" />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="password">
+          <Form.Control type='password' placeholder="Password" />
+        </Form.Group>
+        <div className="Logon__columntwo--link">
+          <p><a>Forgot password ?</a></p>
+        </div>
+        <Button className='px4' type='submit'>Sign in</Button>
+      </Form>
+    </div>
   )
-}
+};
 
-export default withRouter(Login);
+export default Login;
